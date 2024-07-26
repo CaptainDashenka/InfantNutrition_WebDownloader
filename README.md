@@ -1,4 +1,4 @@
-# H1 Infant Nutrition Data Web Downloader
+# Infant Nutrition Data Web Downloader
 
 A Python application to scrape a list of websites and **download infant / baby / toddler nutrtion related content**. 
 The scraped web pages are saved in .MD format in a local `/data` folder.
