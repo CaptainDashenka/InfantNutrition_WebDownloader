@@ -1,0 +1,8 @@
+# Environments
+.venv/
+
+# Data
+data/
+
+# Visual Studio Code 
+.vscode/
