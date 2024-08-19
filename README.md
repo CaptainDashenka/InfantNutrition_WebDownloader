@@ -9,3 +9,5 @@ The Websites scraped are:
 - https://www.cdc.gov/nutrition/infantandtoddlernutrition/index.html
 - https://www.nhs.uk/conditions/baby/weaning-and-feeding/
 - https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/breastfeeding-nutrition/art-20046912
+
+Also Sanity.py to sanitise too verbose files with content that misleads the RAG knpwledge retrieval
