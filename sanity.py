@@ -8,19 +8,19 @@ def sanitise(folder_path, target_pattern,target_string):
         if target_pattern.casefold() in filename.casefold():
             file_path = os.path.join(folder_path, filename)
             
+            print(f"reading file: {filename}")
             # Read the content of the file
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r', errors='replace') as file:
                 content = file.read()
 
                 # first sanitise - remove exotic bytes like 0xa0 or 0x97
                 clean_content = unicodedata.normalize("NFKD",content)
-                print(f"sanitising file: {filename}")
 
                 # Find the the target string
                 index = clean_content.find(target_string)
                 if index != -1:
                     # Truncate the content after the target string
-                  #  clean_content = clean_content[:index + len(target_string)]
+                    clean_content = clean_content[:index + len(target_string)]
                     print (f"trunkated file: {filename}")
                     
                 # Save the modified content back to the file
@@ -30,3 +30,4 @@ def sanitise(folder_path, target_pattern,target_string):
             
 
 sanitise("./data/depth_2", "https___www_mayoclinic_org","There is a problem with information submitted for this request")
+sanitise("./data/depth_2", "https___www_cdc_gov","Last Reviewed:")
