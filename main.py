@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from markdownify import markdownify as md
 import os
 import re
+import unicodedata
 
 def save_markdown(content, url, depth):
     # Sanitize the URL to create a valid filename
@@ -12,8 +13,9 @@ def save_markdown(content, url, depth):
         os.makedirs(directory)
     filepath = os.path.join(directory, f"{filename}.md")
     
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
+    with open(filepath, 'w', encoding='utf-8', errors='ignore') as f:
+        normalised_content = unicodedata.normalize("NFKD", content)
+        f.write(normalised_content)
 
 def crawl(url, depth, max_depth, visited):
     if depth > max_depth or url in visited:
